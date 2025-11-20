@@ -172,14 +172,14 @@ const App: React.FC = () => {
                 <div className="flex items-center bg-slate-100 p-1 rounded-lg">
                   <button
                     onClick={() => setInput({ ...input, isFirstHome: true })}
-                    className={`flex - 1 py - 2 text - sm font - medium rounded - md transition - all ${input.isFirstHome ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'
+                    className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${input.isFirstHome ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'
                       } `}
                   >
                     首套房
                   </button>
                   <button
                     onClick={() => setInput({ ...input, isFirstHome: false })}
-                    className={`flex - 1 py - 2 text - sm font - medium rounded - md transition - all ${!input.isFirstHome ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'
+                    className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${!input.isFirstHome ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'
                       } `}
                   >
                     二套房
