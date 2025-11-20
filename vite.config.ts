@@ -10,6 +10,8 @@ export default defineConfig(({ mode }) => {
       host: '0.0.0.0',
     },
     plugins: [react()],
+
+    base: '/ailoan/',
     define: {
       'process.env.API_KEY': JSON.stringify(env.DEEPSEEK_API_KEY),
       'process.env.DEEPSEEK_API_KEY': JSON.stringify(env.DEEPSEEK_API_KEY)
