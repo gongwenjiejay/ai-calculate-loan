@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Calculator, MapPin, Home, DollarSign, AlertCircle, Loader2, ChevronDown, ChevronUp, RefreshCw, HelpCircle, Wallet, Coins, Coffee } from 'lucide-react';
-import { fetchMortgageAssumptions } from './services/geminiService';
+import { fetchMortgageAssumptions } from './services/aiService';
 import { calculateMortgage, formatCurrency } from './utils/finance';
 import { CalculationResult, LoadingState, UserInput, AIMortgageParams } from './types';
 import ChartComponent from './components/ChartComponent';
@@ -172,15 +172,15 @@ const App: React.FC = () => {
                 <div className="flex items-center bg-slate-100 p-1 rounded-lg">
                   <button
                     onClick={() => setInput({ ...input, isFirstHome: true })}
-                    className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${input.isFirstHome ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'
-                      }`}
+                    className={`flex - 1 py - 2 text - sm font - medium rounded - md transition - all ${input.isFirstHome ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'
+                      } `}
                   >
                     首套房
                   </button>
                   <button
                     onClick={() => setInput({ ...input, isFirstHome: false })}
-                    className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${!input.isFirstHome ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'
-                      }`}
+                    className={`flex - 1 py - 2 text - sm font - medium rounded - md transition - all ${!input.isFirstHome ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'
+                      } `}
                   >
                     二套房
                   </button>
@@ -372,9 +372,9 @@ const App: React.FC = () => {
                         <p className="text-slate-500 mb-1">预估生活费</p>
                         <p className="font-semibold text-slate-800">{formatCurrency(editableParams.monthlyLivingCost || 0)}</p>
                       </div>
-                      <div className={`p-3 rounded-lg ${(result.monthlyNetSavings || 0) > 0 ? 'bg-emerald-50' : 'bg-red-50'}`}>
-                        <p className={`${(result.monthlyNetSavings || 0) > 0 ? 'text-emerald-600' : 'text-red-600'} mb-1`}>每月理论结余</p>
-                        <p className={`font-bold ${(result.monthlyNetSavings || 0) > 0 ? 'text-emerald-700' : 'text-red-700'}`}>
+                      <div className={`p - 3 rounded - lg ${(result.monthlyNetSavings || 0) > 0 ? 'bg-emerald-50' : 'bg-red-50'} `}>
+                        <p className={`${(result.monthlyNetSavings || 0) > 0 ? 'text-emerald-600' : 'text-red-600'} mb - 1`}>每月理论结余</p>
+                        <p className={`font - bold ${(result.monthlyNetSavings || 0) > 0 ? 'text-emerald-700' : 'text-red-700'} `}>
                           {formatCurrency(result.monthlyNetSavings || 0)}
                         </p>
                       </div>
