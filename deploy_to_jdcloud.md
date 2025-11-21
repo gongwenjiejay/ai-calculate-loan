@@ -7,31 +7,55 @@
 Docker 部署方式最简单，环境一致性最好。
 
 ### 1. 准备工作
-确保你的京东云服务器（云主机）已经安装了 Docker。如果没有，请先安装：
+# 部署到京东云指南
+
+## 1. 准备工作
+
+确保你已经登录到京东云服务器，并且安装了 Docker。
+
+## 2. 构建 Docker 镜像
+
+在项目根目录下运行以下命令构建镜像：
+
 ```bash
-# CentOS / Alibaba Cloud Linux
-yum install -y docker
-systemctl start docker
-systemctl enable docker
+docker build -t ai-mortgage-calculator .
 ```
 
-### 2. 上传代码
-将整个项目文件夹上传到服务器，或者在服务器上 git clone。
+## 3. 运行容器
 
-### 3. 构建镜像
-在项目根目录下运行：
+使用以下命令运行容器，将服务器的 80 端口映射到容器的 80 端口：
+
 ```bash
-docker build -t mortgage-calc .
+# 务必传递 DEEPSEEK_API_KEY 环境变量
+docker run -d -p 80:80 \
+  -e DEEPSEEK_API_KEY=your_api_key_here \
+  --name ai-calculator \
+  ai-mortgage-calculator
 ```
 
-### 4. 运行容器
-```bash
-# 将容器的 80 端口映射到服务器的 80 端口
-docker run -d -p 80:80 --name mortgage-app mortgage-calc
+> **注意**: 请将 `your_api_key_here` 替换为你的实际 DeepSeek API Key。
+
+## 4. 验证部署
+
+部署完成后，通过浏览器访问：
+
+```
+https://117.72.79.201/ailoan
 ```
 
-### 5. 访问
-在浏览器输入你的京东云服务器公网 IP，即可访问。
+或者直接访问 IP（会自动跳转）：
+
+```
+http://117.72.79.201
+```
+
+## 5. 常见问题排查
+
+- **无法访问**: 检查京东云安全组是否开放了 80 端口 (HTTP) 和 443 端口 (HTTPS)。
+- **API 报错**: 检查容器日志确认 API Key 是否正确传递：
+    ```bash
+    docker logs ai-calculator
+    ```
 
 ---
 
